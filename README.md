@@ -1,6 +1,6 @@
 # Machine Learning
 
-## Installer environnement de travail
+## Installer l'environnement de travail
 
 ### Pré-requis 
 Java 7+ installé sur l'ordinateur
@@ -16,8 +16,6 @@ Gow permet d'utiliser les commandes linux sur windows
 - https://www.anaconda.com/download/ 
 
 - Windows 64-bits, python **2.7**
-
-
 
 ### Télécharger Spark à la racine de C:/
 http://spark.apache.org/downloads.html 
@@ -49,3 +47,15 @@ Ouvrir la console **Anaconda prompt** et faire
 pip install pyspark
 ```
 ![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_00_53-Anaconda%20Prompt.png)
+
+## Lancer les IDE
+
+### Anaconda navigator
+Launche Jupyter and Spyder
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_24_50-ctith_MachineLearning_%20PySpark.png)
+
+### Jupyter
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_23_03-Untitled.png)
+
+### Spyder
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_24_06-Python%20Programming%20Guide%20-%20Spark%200.9.1%20Documentation.png)
