@@ -244,6 +244,10 @@ testErr = labelsAndPredictions.filter(lambda (v, p): v != p).count() / float(tes
 print('Test Error = ' + str(testErr))
 print('Learned classification forest model:')
 ```
+
+> Py4JJavaError: An error occurred while calling o30.partitions.
+: org.apache.hadoop.mapred.InvalidInputException: Input path does not exist: file:/data/mllib/winequality-red.csv
+
 ------------------
 # MLlib Regression
 
