@@ -8,13 +8,13 @@ Java 7+ installé sur l'ordinateur
 ### Télécharger Anaconda 
 https://www.anaconda.com/download/ 
 
-- Windows 64-bits, python 2.7
+- Windows 64-bits, python **2.7**
 
 [Tuto installation](https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444)
 
 ### Télécharger Spark à la racine de C:/
 http://spark.apache.org/downloads.html 
-- Spark 2.1.0 (Déc 28 2016)
+- Spark 2.3.0 (prendre la dernière version ou la version N-1 + stable proposée sur le site)
 - Package type : Pre-built for Apache Hadoop 2.7 and later
 
 ### Télécharger winutils.exe et le mettre dans le dossier bin de Spark
