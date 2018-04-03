@@ -1,5 +1,15 @@
 # MLlib K-means
 
+Si erreur 
+```python
+NameError: name 'sc' is not defined
+```
+Rajouter dans le script :
+```python
+from pyspark import SparkContext
+sc = SparkContext("local", "App Name")
+```
+
 ## EX0
 
 Créer un fichier ex1kmeans.txt avec pour contenu 2,4,6,7,8,11,3
@@ -177,6 +187,9 @@ print(model.toDebugString())
 from pyspark.mllib.tree import RandomForest, RandomForestModel
 from pyspark.mllib.util import MLUtils
 
+from pyspark import SparkContext
+sc = SparkContext("local", "App Name")
+
 # Charger les données
 data = MLUtils.loadLibSVMFile(sc, 'data/mllib/sample_libsvm_data.txt')
 
@@ -238,12 +251,34 @@ print('Learned classification forest model:')
 ```python
 from pyspark.mllib.regression import LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel
 
+from pyspark import SparkContext
+sc = SparkContext("local", "App Name")
+
+# Charger les données
+data = MLUtils.loadLibSVMFile(sc, 'data/mllib/sample_libsvm_data.txt')
+
+# Découper les données ensemble d’apprentissage et de test (70%,30%)
+(trainingData, testData) = data.randomSplit([0.7, 0.3])
+
+# Appliquer les forêts aléatoires.
+model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={}, numTrees=3)
+
+# Evaluer le modèle
+predictions = model.predict(testData.map(lambda x: x.features))
+labelsAndPredictions = testData.map(lambda lp: lp.label).zip(predictions)
+testErr = labelsAndPredictions.filter(lambda (v, p): v != p).count() / float(testData.count())
+
+print('Test Error = ' + str(testErr))
+print('Learned classification forest model:')
+print(model.toDebugString())
+
 # charger et préparer les données
 def parsePoint(line):
   values = [float(x) for x in line.replace(',', ' ').split(' ')]
   return LabeledPoint(values[0], values[1:])
-  data = sc.textFile("data/mllib/ridge-data/lpsa.data")
-  parsedData = data.map(parsePoint)
+
+data = sc.textFile("data/mllib/ridge-data/lpsa.data")
+parsedData = data.map(parsePoint)
 
 # créer le modèle
 model = LinearRegressionWithSGD.train(parsedData, iterations=100)
@@ -257,4 +292,5 @@ print("Mean Squared Error = " + str(MSE))
 model.save(sc, "target/tmp/pythonLinearRegressionWithSGDModel")
 OurModel = LinearRegressionModel.load(sc,"target/tmp/pythonLinearRegressionWithSGDModel")
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_59_27-MLlib%20Regression.png)
 
