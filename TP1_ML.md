@@ -195,12 +195,16 @@ print('Test Error = ' + str(testErr))
 print('Learned classification forest model:')
 print(model.toDebugString())
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_50_55-MLlib%20Random%20Forest%20-%20EX1.png)
 
 ## EX2
 ```python
 from pyspark.mllib.tree import RandomForest, RandomForestModel
 from pyspark.mllib.util import MLUtils
 from pyspark.mllib.regression import LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel
+
+from pyspark import SparkContext
+sc = SparkContext("local", "App Name")
 
 # préparer les données
 def MapLine(line):
@@ -210,12 +214,12 @@ def MapLine(line):
   else:
     return LabeledPoint(1, val[:10])
     
-  data = sc.textFile("/data/mllib/winequality-red.csv")
-  data = data.filter(lambda line: 'fixed acidity' not in line)
-  labelData = data.map(MapLine)
-  (trainingData, testData) = labelData.randomSplit([0.7, 0.3])
-  model = RandomForest.trainClassifier(trainingData, numClasses=2,
-  categoricalFeaturesInfo={}, numTrees=3, impurity='gini')
+data = sc.textFile("/data/mllib/winequality-red.csv")
+data = data.filter(lambda line: 'fixed acidity' not in line)
+labelData = data.map(MapLine)
+(trainingData, testData) = labelData.randomSplit([0.7, 0.3])
+model = RandomForest.trainClassifier(trainingData, numClasses=2,
+categoricalFeaturesInfo={}, numTrees=3, impurity='gini')
 
 # Afficher le modèle
 print(model.toDebugString())
@@ -223,8 +227,7 @@ print(model.toDebugString())
 # Evaluer le modèle
 predictions = model.predict(testData.map(lambda x: x.features))
 labelsAndPredictions = testData.map(lambda lp: lp.label).zip(predictions)
-testErr = labelsAndPredictions.filter(lambda (v, p): v != p).count() /
-float(testData.count())
+testErr = labelsAndPredictions.filter(lambda (v, p): v != p).count() / float(testData.count())
 
 print('Test Error = ' + str(testErr))
 print('Learned classification forest model:')
