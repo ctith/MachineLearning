@@ -7,7 +7,7 @@ from numpy import array
 from math import sqrt
 
 from pyspark import SparkContext
-sc = SparkContext("local", "App Name", pyFiles=['MyFile.py', 'lib.zip', 'app.egg'])
+sc = SparkContext("local", "App Name")
 
 # charger les données
 data = sc.textFile("data/mllib/kmeans_data.txt")
@@ -29,7 +29,7 @@ from numpy import array
 from math import sqrt
 
 from pyspark import SparkContext
-sc = SparkContext("local", "App Name", pyFiles=['MyFile.py', 'lib.zip', 'app.egg'])
+sc = SparkContext("local", "App Name")
 
 # charger les données
 data = sc.textFile("/Users/ebenahme/Downloads/ds/3D_spatial_network.txt")
@@ -42,4 +42,60 @@ clusters = KMeans.train(parsedData, 3, maxIterations=20)
 
 # afficher les centres des clusters
 clusters.clusterCenters
+```
+
+# MLlib FPGrowth
+```python
+#!/usr/bin/env python
+from pyspark.mllib.fpm import FPGrowth
+
+from pyspark import SparkContext
+sc = SparkContext("local", "App Name")
+
+# charger les données
+data = sc.textFile("data/mllib/sample_fpgrowth.txt")
+
+#Préparer les données
+splitedData= data.map(lambda line: line.strip().split(' '))
+
+# Appliquer FP-Growth
+model = FPGrowth.train(splitedData, minSupport=0.2, numPartitions=10)
+result = model.freqItemsets().collect()
+
+#Afficher le résultat
+for item in result:
+print(item)
+```
+
+# MLlib DecisionTree
+```python
+#!/usr/bin/env python
+from pyspark.mllib.regression import LabeledPoint
+from pyspark.mllib.tree import DecisionTree 
+from pyspark.mllib.util import MLUtils
+
+from pyspark import SparkContext
+sc = SparkContext("local", "App Name")
+
+# charger les données
+data = MLUtils.loadLibSVMFile(sc, 'data/mllib/sample_libsvm_data.txt').cache()
+
+# Appliquer les arbres de décisions
+model = DecisionTree.trainClassifier(data, numClasses=2, categoricalFeaturesInfo={},impurity='gini', maxDepth=5)
+
+#Afficher le modèle
+print(model.toDebugString())
+
+# Evaluer le résultat
+predictions = model.predict(data.map(lambda x: x.features))
+predictions.collect()
+
+labelsAndPredictions = data.map(lambda lp: lp.label).zip(predictions)
+labelsAndPredictions.collect()
+trainErr = labelsAndPredictions.filter(lambda (v, p): v != p).count() /
+float(data.count())
+
+print('Training Error = ' + str(trainErr))
+print('Learned classification tree model:')
+print(model)
 ```
