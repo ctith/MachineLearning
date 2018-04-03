@@ -135,6 +135,35 @@ print(model)
 ```
 
 ## EX2
+```python
+from pyspark.mllib.regression import LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel
 
+def mapping(line):
+  line= line.replace('-1.000000', '0.000000')
+  line= line.replace('-', '')
+  return line
+
+def toWriteFile(data):
+  return ''.join(str(d) for d in data)
+  data = sc.textFile("data/mllib/duke 2.csv")
+  parsed=data.map(mapping)
+  parsed.collect()
+  lines=parsed.map(toWriteFile)
+  lines.saveAsTextFile('ex1.txt')
+  
+from pyspark.mllib.regression import LabeledPoint
+from pyspark.mllib.tree import DecisionTree 
+from pyspark.mllib.util import MLUtils
+
+# charger les données
+data = MLUtils.loadLibSVMFile(sc, '/data/mllib/ex1.txt/part-00000').cache()
+
+# Appliquer les arbres de décisions
+model = DecisionTree.trainClassifier(data, numClasses=2,
+categoricalFeaturesInfo={},impurity='gini', maxDepth=7)
+
+#Afficher le modèle
+print(model.toDebugString())
+```
 ---------------------
 
