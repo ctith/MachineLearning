@@ -55,6 +55,10 @@ Launche Jupyter and Spyder
 ![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_24_50-ctith_MachineLearning_%20PySpark.png)
 
 ### Jupyter
+Créer un nouveau dossier qui sera notre workspace (new folder) 
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_41_26-Home.png)
+
+puis créer un nouveau fichier (new file) pour écrire notre script python.
 ![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_23_03-Untitled.png)
 
 ### Spyder
