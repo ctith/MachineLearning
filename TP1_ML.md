@@ -177,6 +177,8 @@ model = DecisionTree.trainClassifier(data, numClasses=2, categoricalFeaturesInfo
 # Afficher le modèle
 print(model.toDebugString())
 ```
+> Py4JJavaError: An error occurred while calling z:org.apache.spark.api.python.PythonRDD.collectAndServe.
+: org.apache.hadoop.mapred.InvalidInputException: Input path does not exist: file:/data/mllib/ex1.txt/part-00000
 ![]()
 ---------------------
 
