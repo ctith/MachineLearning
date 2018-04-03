@@ -1,5 +1,6 @@
 # MLlib K-means
 
+## Cours
 ```python
 #!/usr/bin/env python
 from pyspark.mllib.clustering import KMeans
@@ -44,6 +45,20 @@ clusters = KMeans.train(parsedData, 3, maxIterations=20)
 clusters.clusterCenters
 ```
 
+## Exercice
+
+Créer un fichier ex1kmeans.txt avec pour contenu 2,4,6,7,8,11,3
+
+Lancer sur Pyspark
+```python
+data = sc.texteFile("ex1kmeans.txt")
+parsedData = data.map(lambda line:array([float(x) for x in line.split(',')]))
+clusters = KMeans.train(parsedData,3)
+clusters.clusterCenters
+```
+
+------------------------------
+
 # MLlib FPGrowth
 ```python
 #!/usr/bin/env python
@@ -66,6 +81,8 @@ result = model.freqItemsets().collect()
 for item in result:
 print(item)
 ```
+
+------------------------
 
 # MLlib DecisionTree
 ```python
