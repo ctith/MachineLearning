@@ -5,6 +5,10 @@
 ### Pré-requis 
 Java 7+ installé sur l'ordinateur
 
+### Télécharger Gow
+Gow permet d'utiliser les commandes linux sur windows
+https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe
+
 ### Télécharger Anaconda 
 https://www.anaconda.com/download/ 
 
