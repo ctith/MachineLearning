@@ -49,12 +49,24 @@ clusters.clusterCenters
 
 Créer un fichier ex1kmeans.txt avec pour contenu 2,4,6,7,8,11,3
 
-Lancer sur Pyspark
+Lancer sur un IDE pyspark
 ```python
-data = sc.texteFile("ex1kmeans.txt")
+#!/usr/bin/env python
+from pyspark.mllib.clustering import KMeans
+from numpy import array 
+from math import sqrt
+
+# charger les données
+data = sc.textFile("ex1kmeans.txt")
+
+#préparer les données
 parsedData = data.map(lambda line:array([float(x) for x in line.split(',')]))
+
+# créer le modèle
 clusters = KMeans.train(parsedData,3)
-clusters.clusterCenters
+
+# afficher les centres des clusters
+print(clusters.clusterCenters)
 ```
 
 ------------------------------
