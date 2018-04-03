@@ -7,14 +7,17 @@ Java 7+ installé sur l'ordinateur
 
 ### Télécharger Gow
 Gow permet d'utiliser les commandes linux sur windows
-https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe
+- https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe
 
 ### Télécharger Anaconda 
-https://www.anaconda.com/download/ 
+
+[Tuto installation](https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444)
+
+- https://www.anaconda.com/download/ 
 
 - Windows 64-bits, python **2.7**
 
-[Tuto installation](https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444)
+
 
 ### Télécharger Spark à la racine de C:/
 http://spark.apache.org/downloads.html 
