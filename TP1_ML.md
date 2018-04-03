@@ -23,6 +23,7 @@ clusters = KMeans.train(parsedData,3)
 # afficher les centres des clusters
 print(clusters.clusterCenters)
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_18_40-Ex0%20-%20MLlib%20K-means.png)
 
 ## EX1
 ```python
@@ -46,6 +47,7 @@ clusters = KMeans.train(splitedData , 3, maxIterations=10)
 # afficher les centres des clusters
 print(clusters.clusterCenters)
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_18_25-Ex1%20-%20MLlib%20K-means.png)
 
 ## EX2
 ```python
@@ -69,7 +71,7 @@ clusters = KMeans.train(parsedData, 3, maxIterations=20)
 # afficher les centres des clusters
 clusters.clusterCenters
 ```
-
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_18_11-Ex2%20-%20MLlib%20K-means.png)
 ------------------------------
 
 # MLlib FPGrowth
