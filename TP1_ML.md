@@ -23,6 +23,7 @@ print(clusters.clusterCenters)
 ```
 
 ```python
+#!/usr/bin/env python
 from pyspark.mllib.clustering import KMeans
 from numpy import array 
 from math import sqrt
