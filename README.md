@@ -6,8 +6,11 @@
 Java 7+ installé sur l'ordinateur
 
 ### Télécharger Anaconda 
-https://anaconda.org/anaconda/python/files
+https://www.anaconda.com/download/ 
+
 - Windows 64-bits, python 2.7
+
+[Tuto installation](https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444)
 
 ### Télécharger Spark à la racine de C:/
 http://spark.apache.org/downloads.html 
