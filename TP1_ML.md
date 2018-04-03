@@ -231,8 +231,7 @@ data = sc.textFile("/data/mllib/winequality-red.csv")
 data = data.filter(lambda line: 'fixed acidity' not in line)
 labelData = data.map(MapLine)
 (trainingData, testData) = labelData.randomSplit([0.7, 0.3])
-model = RandomForest.trainClassifier(trainingData, numClasses=2,
-categoricalFeaturesInfo={}, numTrees=3, impurity='gini')
+model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={}, numTrees=3, impurity='gini')
 
 # Afficher le modèle
 print(model.toDebugString())
