@@ -25,11 +25,6 @@ http://spark.apache.org/downloads.html
 https://github.com/steveloughran/winutils/blob/master/hadoop-2.6.0/bin/winutils.exe?raw=true
 
 ### Mettre Spark dans les [variables d'environnement](https://ss64.com/nt/set.html)
-Dans le path système : 
-```
-C:\spark-2.3.0-bin-hadoop2.7\bin
-```
-
 Dans les variables utilisateurs :
 ```
 setx SPARK_HOME C:\spark-2.3.0-bin-hadoop2.7\bin
@@ -37,9 +32,17 @@ setx HADOOP_HOME C:\spark-2.3.0-bin-hadoop2.7\bin
 setx PYSPARK_DRIVER_PYTHON ipython
 setx PYSPARK_DRIVER_PYTHON_OPTS notebook
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_02_30-Variables%20d%E2%80%99environnement.png)
+
+Dans le path système : 
+```
+C:\spark-2.3.0-bin-hadoop2.7\bin
+```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_02_46-Modifier%20la%20variable%20d'environnement.png)
 
 ### Installer Pyspark
 Ouvrir la console **Anaconda prompt** et faire
 ```
 pip install pyspark
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2015_00_53-Anaconda%20Prompt.png)
