@@ -23,7 +23,7 @@ clusters = KMeans.train(parsedData,3)
 # afficher les centres des clusters
 print(clusters.clusterCenters)
 ```
-![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_18_40-Ex0%20-%20MLlib%20K-means.png)
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_26_31-Ex0%20-%20MLlib%20K-means.png)
 
 ## EX1
 ```python
@@ -100,6 +100,8 @@ print(item)
 ------------------------
 
 # MLlib DecisionTree
+
+## EX1
 ```python
 #!/usr/bin/env python
 from pyspark.mllib.regression import LabeledPoint
@@ -131,3 +133,8 @@ print('Training Error = ' + str(trainErr))
 print('Learned classification tree model:')
 print(model)
 ```
+
+## EX2
+
+---------------------
+
