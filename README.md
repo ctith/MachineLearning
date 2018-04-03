@@ -37,3 +37,9 @@ setx HADOOP_HOME C:\spark-2.3.0-bin-hadoop2.7\bin
 setx PYSPARK_DRIVER_PYTHON ipython
 setx PYSPARK_DRIVER_PYTHON_OPTS notebook
 ```
+
+### Installer Pyspark
+Ouvrir la console **Anaconda prompt** et faire
+```
+pip install pyspark
+```
