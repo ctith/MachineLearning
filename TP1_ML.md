@@ -1,6 +1,30 @@
 # MLlib K-means
 
-## Cours
+## EX0
+
+Créer un fichier ex1kmeans.txt avec pour contenu 2,4,6,7,8,11,3
+
+Lancer sur un IDE pyspark
+```python
+#!/usr/bin/env python
+from pyspark.mllib.clustering import KMeans
+from numpy import array 
+from math import sqrt
+
+# charger les données
+data = sc.textFile("ex1kmeans.txt")
+
+#préparer les données
+parsedData = data.map(lambda line:array([float(x) for x in line.split(',')]))
+
+# créer le modèle
+clusters = KMeans.train(parsedData,3)
+
+# afficher les centres des clusters
+print(clusters.clusterCenters)
+```
+
+## EX1
 ```python
 #!/usr/bin/env python
 from pyspark.mllib.clustering import KMeans
@@ -23,6 +47,7 @@ clusters = KMeans.train(splitedData , 3, maxIterations=10)
 print(clusters.clusterCenters)
 ```
 
+## EX2
 ```python
 #!/usr/bin/env python
 from pyspark.mllib.clustering import KMeans
@@ -33,7 +58,7 @@ from pyspark import SparkContext
 sc = SparkContext("local", "App Name")
 
 # charger les données
-data = sc.textFile("/Users/ebenahme/Downloads/ds/3D_spatial_network.txt")
+data = sc.textFile("data/mllib/3D_spatial_network.txt")
 
 #préparer les données
 parsedData = data.map(lambda line: array([float(x) for x in line.split(',')]))
@@ -43,30 +68,6 @@ clusters = KMeans.train(parsedData, 3, maxIterations=20)
 
 # afficher les centres des clusters
 clusters.clusterCenters
-```
-
-## Exercice
-
-Créer un fichier ex1kmeans.txt avec pour contenu 2,4,6,7,8,11,3
-
-Lancer sur un IDE pyspark
-```python
-#!/usr/bin/env python
-from pyspark.mllib.clustering import KMeans
-from numpy import array 
-from math import sqrt
-
-# charger les données
-data = sc.textFile("ex1kmeans.txt")
-
-#préparer les données
-parsedData = data.map(lambda line:array([float(x) for x in line.split(',')]))
-
-# créer le modèle
-clusters = KMeans.train(parsedData,3)
-
-# afficher les centres des clusters
-print(clusters.clusterCenters)
 ```
 
 ------------------------------
