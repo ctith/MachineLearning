@@ -101,7 +101,7 @@ Output :
 ![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_18_11-Ex2%20-%20MLlib%20K-means.png)
 ------------------------------
 
-# MLlib FPGrowth
+# MLlib FPGrowth : algorithme Apriori
 Input :
 ```python
 #!/usr/bin/env python
@@ -278,6 +278,12 @@ Output :
 ---------------------
 
 # MLlib Random Forest
+
+Les forêts aléatoires consistent :
+- à exécuter en parallèle un grand nombre (environ 400) d'arbres de décisions construits aléatoirement
+- à les moyenner
+
+Dans le cas de Random Forest, le tirage aléatoire des variables explicatives à chaque noeud aboutit à des arbres non corrélés.
 
 ## EX1
 Input :
