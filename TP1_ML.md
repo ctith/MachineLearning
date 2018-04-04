@@ -181,7 +181,9 @@ FreqItemset(items=[u'q', u'x'], freq=2)
 FreqItemset(items=[u'q', u'x', u'z'], freq=2)
 FreqItemset(items=[u'q', u'z'], freq=2)
 ```
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/FP-Growth.jpg)
 ![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_28_59-MLlib%20FPGrowth.png)
+
 ------------------------
 
 # MLlib DecisionTree
