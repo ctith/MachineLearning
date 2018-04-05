@@ -388,31 +388,10 @@ Input :
 ```python
 from pyspark.mllib.regression import LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel
 
-from pyspark import SparkContext
-sc = SparkContext("local", "App Name")
-
-# Charger les données
-data = MLUtils.loadLibSVMFile(sc, 'data/mllib/sample_libsvm_data.txt')
-
-# Découper les données ensemble d’apprentissage et de test (70%,30%)
-(trainingData, testData) = data.randomSplit([0.7, 0.3])
-
-# Appliquer les forêts aléatoires.
-model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={}, numTrees=3)
-
-# Evaluer le modèle
-predictions = model.predict(testData.map(lambda x: x.features))
-labelsAndPredictions = testData.map(lambda lp: lp.label).zip(predictions)
-testErr = labelsAndPredictions.filter(lambda (v, p): v != p).count() / float(testData.count())
-
-print('Test Error = ' + str(testErr))
-print('Learned classification forest model:')
-print(model.toDebugString())
-
 # charger et préparer les données
 def parsePoint(line):
-  values = [float(x) for x in line.replace(',', ' ').split(' ')]
-  return LabeledPoint(values[0], values[1:])
+    values = [float(x) for x in line.replace(',', ' ').split(' ')]
+    return LabeledPoint(values[0], values[1:])
 
 data = sc.textFile("data/mllib/ridge-data/lpsa.data")
 parsedData = data.map(parsePoint)
@@ -426,44 +405,12 @@ MSE = VP.map(lambda (v, p): (v - p)**2) .reduce(lambda x, y: x + y) / data.count
 print("Mean Squared Error = " + str(MSE))
 
 # Sauvegarder le modèle
-model.save(sc, "target/tmp/pythonLinearRegressionWithSGDModel")
-OurModel = LinearRegressionModel.load(sc,"target/tmp/pythonLinearRegressionWithSGDModel")
+model.save(sc, "target/tmp/pythonLinearRegressionWithSGDModel1")
+OurModel = LinearRegressionModel.load(sc,"target/tmp/pythonLinearRegressionWithSGDModel1")
 ```
 Output :
 ```python
-Test Error = 0.0740740740741
-Learned classification forest model:
-TreeEnsembleModel classifier with 3 trees
-
-  Tree 0:
-    If (feature 433 <= 52.5)
-     If (feature 539 <= 18.5)
-      If (feature 152 <= 2.5)
-       Predict: 1.0
-      Else (feature 152 > 2.5)
-       Predict: 0.0
-     Else (feature 539 > 18.5)
-      Predict: 0.0
-    Else (feature 433 > 52.5)
-     Predict: 1.0
-  Tree 1:
-    If (feature 328 <= 24.0)
-     If (feature 511 <= 1.5)
-      Predict: 1.0
-     Else (feature 511 > 1.5)
-      Predict: 0.0
-    Else (feature 328 > 24.0)
-     Predict: 0.0
-  Tree 2:
-    If (feature 407 <= 26.0)
-     If (feature 212 <= 51.5)
-      Predict: 1.0
-     Else (feature 212 > 51.5)
-      Predict: 0.0
-    Else (feature 407 > 26.0)
-     Predict: 1.0
-
-Mean Squared Error = 6.207597210613579
+Mean Squared Error = 6.207597210613578
 ```
-![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-03%2016_59_27-MLlib%20Regression.png)
+![](https://github.com/ctith/MachineLearning/blob/master/ml_screenshot/2018-04-05%2010_45_08-MLlib%20Regression.png)
 
